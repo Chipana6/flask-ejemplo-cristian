@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} | Flask Ejemplo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="{{ url_for('inicio') }}" class="logo">🐍 Flask App</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li><a href="{{ url_for('estudiantes') }}" class="activo">Estudiantes</a></li>
+            <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="contenedor">
+        <h1>Lista de Estudiantes</h1>
+        <p class="subtitulo">Total: {{ estudiantes|length }} estudiantes registrados</p>
+
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Carrera</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for est in estudiantes %}
+                <tr>
+                    <td>{{ est.id }}</td>
+                    <td><strong>{{ est.nombre }}</strong></td>
+                    <td>{{ est.edad }}</td>
+                    <td>{{ est.carrera }}</td>
+                    <td>{{ est.email }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">No hay estudiantes registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="footer">
+        <p>Flask Ejemplo © 2026 | Hecho con Python 🐍</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} | Flask Ejemplo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="{{ url_for('inicio') }}" class="logo">🐍 Flask App</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li><a href="{{ url_for('estudiantes') }}">Estudiantes</a></li>
+            <li><a href="{{ url_for('contacto') }}" class="activo">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="contenedor">
+        <h1>Contacto</h1>
+        <p class="subtitulo">¿Tienes alguna pregunta? Escríbenos.</p>
+
+        {% if mensaje %}
+        <div class="mensaje">{{ mensaje }}</div>
+        {% endif %}
+
+        <form class="formulario" method="POST" action="{{ url_for('contacto') }}">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="asunto">Asunto:</label>
+            <input type="text" id="asunto" name="asunto" required>
+
+            <label for="mensaje-texto">Mensaje:</label>
+            <textarea id="mensaje-texto" name="mensaje" rows="5"></textarea>
+
+            <button type="submit" class="boton">Enviar Mensaje</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>Flask Ejemplo © 2026 | Hecho con Python 🐍</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

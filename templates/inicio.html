@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} | Flask Ejemplo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="{{ url_for('inicio') }}" class="logo">🐍 Flask App</a>
+        <ul class="menu">
+            <li><a href="{{ url_for('inicio') }}" class="activo">Inicio</a></li>
+            <li><a href="{{ url_for('estudiantes') }}">Estudiantes</a></li>
+            <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="contenedor">
+        <section class="hero">
+            <h1>Bienvenido a Flask 🚀</h1>
+            <p>Aplicación de ejemplo con rutas, templates y estilos.</p>
+            <div class="acciones">
+                <a href="{{ url_for('estudiantes') }}" class="boton">Ver Estudiantes</a>
+                <a href="{{ url_for('contacto') }}" class="boton boton-secundario">Contacto</a>
+            </div>
+        </section>
+
+        <section class="tarjetas">
+            <div class="tarjeta">
+                <h3>📋 Rutas</h3>
+                <p>Cada página tiene su propia ruta definida con <code>@app.route()</code>.</p>
+            </div>
+            <div class="tarjeta">
+                <h3>🎨 Templates</h3>
+                <p>Los HTML usan Jinja2 para mostrar datos dinámicos.</p>
+            </div>
+            <div class="tarjeta">
+                <h3>⚡ Static</h3>
+                <p>CSS y JS se sirven desde la carpeta <code>static/</code>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Flask Ejemplo © 2026 | Hecho con Python 🐍</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
